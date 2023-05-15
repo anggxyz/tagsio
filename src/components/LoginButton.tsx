@@ -17,6 +17,8 @@ const LoginButton = () => {
   }
   else {
     return (
+      // @todo not sure why Button component doesn't work here
+      
       // <Button onClick={openConnectModal} title="Connect" />
       <div className=" self-center">
       <ConnectButton label="Connect" />

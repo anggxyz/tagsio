@@ -7,7 +7,6 @@ export const Navbar = () => {
       <div
         className={`
         z-10
-        hidden
         w-full flex-row items-center justify-between gap-8
         px-3 font-secondary text-sm
         shadow-md
