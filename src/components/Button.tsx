@@ -1,15 +1,40 @@
+// tailwind styles
+const basic = `p-2 rounded-md cursor-default`
+const hover = `transform transition duration-500 hover:scale-[1.05]`
+
+
+// component
 const Button = ({
-  title, onClick, className
+  title,
+  onClick,
+  className,
+  disabled,
+  hoverEffect=true
 }: {
   title: string,
-  onClick: () => void;
+  onClick?: (() => void) | undefined;
   className?: string;
+  disabled?: boolean
+  hoverEffect?: boolean;
 }) => {
+  let look;
+  if (!disabled) {
+    look = `
+      ${onClick ? "cursor-pointer" : ""}
+      ${className || " "}
+      ${basic}
+      ${hoverEffect ? hover : ""}
+    `
+  }
+  if (disabled) {
+    look = `
+      ${className || ""}
+      ${basic}
+      bg-disabled text-disabled-text
+    `
+  }
   return (
-    <button className={`
-      ${className || ""} p-2 cursor-pointer rounded-md
-      transform transition duration-500 hover:scale-[1.05]
-    `} onClick={onClick}>
+    <button className={look} onClick={onClick} disabled>
       {title}
     </button>
   )
