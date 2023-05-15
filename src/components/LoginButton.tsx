@@ -6,7 +6,7 @@ import { useDisconnect } from "wagmi"
 
 
 const LoginButton = () => {
-  const {wallet, isSignedIn} = useWallet();
+  const { wallet, isSignedIn } = useWallet();
   const { disconnect } = useDisconnect({
     onSuccess(data) {
       console.log("Success", data)
