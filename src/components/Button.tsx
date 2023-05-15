@@ -1,18 +1,18 @@
 // tailwind styles
-const basic = `p-2 rounded-md cursor-default`
+const basic = `p-2 rounded-md cursor-pointer`
 const hover = `transform transition duration-500 hover:scale-[1.05]`
 
 
 // component
 const Button = ({
   title,
-  onClick,
+  handleClick,
   className,
-  disabled,
+  disabled = false,
   hoverEffect=true
 }: {
   title: string,
-  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+  handleClick: () => void;
   className?: string;
   disabled?: boolean
   hoverEffect?: boolean;
@@ -20,7 +20,6 @@ const Button = ({
   let look;
   if (!disabled) {
     look = `
-      ${onClick ? "cursor-pointer" : ""}
       ${className || " "}
       ${basic}
       ${hoverEffect ? hover : ""}
@@ -34,7 +33,7 @@ const Button = ({
     `
   }
   return (
-    <button className={look} onClick={onClick} disabled>
+    <button className={look} onClick={handleClick} disabled={disabled}>
       {title}
     </button>
   )

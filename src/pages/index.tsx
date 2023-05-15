@@ -30,14 +30,14 @@ const Home: NextPage = () => {
             <div className="flex flex-col gap-1">
                 <Button
                   title="Buy"
-                  onClick={() => {
+                  handleClick={() => {
                     console.log("button: buy")
                   }}
                   className="bg-highlight text-white"
                 />
                 <Button
                   title="Redeem"
-                  onClick={() => {
+                  handleClick={() => {
                     console.log("button: redeem")
                   }}
                   disabled
