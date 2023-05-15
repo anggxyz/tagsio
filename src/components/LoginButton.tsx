@@ -1,12 +1,12 @@
-import { useConnectModal } from "@rainbow-me/rainbowkit";
+import { ConnectButton } from "@rainbow-me/rainbowkit";
 import Button from "./Button";
 import useWallet from "../hooks/useWallet";
 import formatWalletAddress from "../utils/formatAddress";
 
 
 const LoginButton = () => {
-  const { openConnectModal } = useConnectModal();
   const wallet = useWallet();
+
   if (wallet.isSignedIn) {
     return (
       <Button
@@ -17,7 +17,10 @@ const LoginButton = () => {
   }
   else {
     return (
-      <Button onClick={openConnectModal} title="Connect" />
+      // <Button onClick={openConnectModal} title="Connect" />
+      <div className=" self-center">
+      <ConnectButton label="Connect" />
+      </div>
     )
   }
 };

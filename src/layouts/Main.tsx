@@ -1,5 +1,5 @@
 import { Navbar } from "~/src/components/Navbar";
-import Footer from "~/src/components/Footer";
+// import Footer from "~/src/components/Footer";
 import type { ReactNode } from "react";
 
 
@@ -11,7 +11,7 @@ const Main = ({
   className?: string;
 }) => {
   return (
-    <div className="relative flex min-h-screen flex-col overflow-hidden selection:bg-highlight selection:text-primary bg-secondary">
+    <div className="relative flex min-h-screen flex-col overflow-hidden selection:bg-highlight selection:text-primary bg-white">
       <Navbar />
       <div
         className={`

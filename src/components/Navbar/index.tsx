@@ -10,10 +10,8 @@ export const Navbar = () => {
         hidden
         w-full flex-row items-center justify-between gap-8
         px-3 font-secondary text-sm
-        text-primary-lighter
         shadow-md
         sm:flex
-        bg-primary
       `}
       >
         <div className="flex flex-grow flex-row justify-around gap-8">

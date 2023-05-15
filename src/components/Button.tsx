@@ -12,7 +12,7 @@ const Button = ({
   hoverEffect=true
 }: {
   title: string,
-  onClick?: (() => void) | undefined;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
   className?: string;
   disabled?: boolean
   hoverEffect?: boolean;
