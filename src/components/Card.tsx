@@ -12,14 +12,14 @@ const Card = ({
     <div className="w-80">
     <Tilt
       style={{
-        background: '#000',
+        background: "#000",
         borderRadius: "8px"
       }}
       options={{
         scale: 1.01,
         max: 10,
         glare: true,
-        'max-glare': 1,
+        "max-glare": 1,
         speed: 1000
       }}
     >

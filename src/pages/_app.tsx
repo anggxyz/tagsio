@@ -3,7 +3,7 @@ import { type Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
 import "@rainbow-me/rainbowkit/styles.css";
 import "../styles/globals.css";
-import { RainbowKitProvider, getDefaultWallets } from '@rainbow-me/rainbowkit';
+import { RainbowKitProvider, getDefaultWallets } from "@rainbow-me/rainbowkit";
 import "@rainbow-me/rainbowkit/styles.css";
 import "../styles/globals.css";
 import { configureChains, createClient, WagmiConfig } from "wagmi";
