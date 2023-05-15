@@ -32,6 +32,8 @@ export default async function auth(req: NextApiRequest, res: NextApiResponse) {
             JSON.parse(credentials?.message || "{}")
           );
           const result = await siwe.validate(credentials?.signature || "");
+          console.log({siwe});
+          console.log("result:",result);
           if (result.address) {
             await createUserFromAddress(result.address);
             return {

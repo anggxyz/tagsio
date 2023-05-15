@@ -6,7 +6,7 @@ import { useDisconnect } from "wagmi"
 
 
 const LoginButton = () => {
-  const wallet = useWallet();
+  const {wallet, isSignedIn} = useWallet();
   const { disconnect } = useDisconnect({
     onSuccess(data) {
       console.log("Success", data)
@@ -21,10 +21,11 @@ const LoginButton = () => {
     disconnect();
   }
 
-  if (wallet.isSignedIn) {
+  if (isSignedIn && wallet) {
+    console.log({wallet});
     return (
       <Button
-        title={formatWalletAddress(wallet.wallet)}
+        title={formatWalletAddress(wallet)}
         handleClick={handle}
         hoverEffect={false}
       />
