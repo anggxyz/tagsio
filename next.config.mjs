@@ -18,6 +18,14 @@ const config = {
     locales: ["en"],
     defaultLocale: "en",
   },
-  transpilePackages: ["react-tilt"]
+  transpilePackages: ["react-tilt"],
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "pbs.twimg.com",
+      },
+    ],
+  },
 };
 export default config;

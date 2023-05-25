@@ -1,4 +1,3 @@
-import LoginButton from "../LoginButton";
 import { Branding } from "./Branding";
 
 export const Navbar = () => {
@@ -14,9 +13,29 @@ export const Navbar = () => {
       `}
       >
         <div className="flex flex-grow flex-row justify-around gap-8">
-        <Branding />
-        <LoginButton/>
+          <Branding />
         </div>
+        {/* not working as expected - need to convert useUSer into context */}
+        {/* <div>
+          {
+            hasCompletedVerification &&
+            <>
+            <Button
+              title="View Verification"
+              handleClick={openModal}
+              className="w-full bg-green-500 text-white"
+            />
+            <VerificationModal
+              modalIsOpen={modalIsOpen}
+              closeModal={closeModal}
+              user={user}
+              isSignedIn={isSignedIn}
+              refetch={refetch}
+            />
+          </>
+          }
+
+        </div> */}
       </div>
     </>
   );

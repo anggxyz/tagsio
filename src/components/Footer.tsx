@@ -9,7 +9,7 @@ const Footer = () => {
     `}
     >
       <div className="flex flex-row items-center justify-center">
-      {/* @todo */}
+        {/* @todo */}
       </div>
     </div>
   );

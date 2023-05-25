@@ -26,8 +26,8 @@ module.exports = {
         },
         disabled: {
           DEFAULT: "#8B7E74",
-          text: "#D3D3D3"
-        }
+          text: "#D3D3D3",
+        },
       },
       fontFamily: {
         primary: ["sans-serif"],

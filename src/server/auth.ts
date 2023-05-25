@@ -1,11 +1,8 @@
 import { type GetServerSidePropsContext } from "next";
-import {
-  getServerSession,
-  type NextAuthOptions,
-  type DefaultSession,
-} from "next-auth";
+import { getServerSession, type NextAuthOptions } from "next-auth";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { prisma } from "~/src/server/db";
+import type { DefaultJWT } from "next-auth/jwt";
 
 /**
  * Module augmentation for `next-auth` types. Allows us to add custom properties to the `session`
@@ -14,18 +11,29 @@ import { prisma } from "~/src/server/db";
  * @see https://next-auth.js.org/getting-started/typescript#module-augmentation
  */
 declare module "next-auth" {
-  interface Session extends DefaultSession {
+  interface Session {
     user: {
+      // what we want to store for ethereum login
       address: string;
-      // ...other properties
-      // role: UserRole;
+      databseId: string;
+    };
+    expires: string;
+  }
+  interface Profile {
+    // from twitter api
+    data: {
+      name?: string;
+      username?: string;
+      profile_image_url?: string;
+      id: string;
     };
   }
+}
 
-  // interface User {
-  //   // ...other properties
-  //   // role: UserRole;
-  // }
+declare module "next-auth/jwt" {
+  interface JWT extends DefaultJWT {
+    databaseId: string;
+  }
 }
 
 /**
