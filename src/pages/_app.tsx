@@ -19,6 +19,7 @@ import { RainbowKitSiweNextAuthProvider } from "@rainbow-me/rainbowkit-siwe-next
 import { env } from "../env.mjs";
 import { NextSeo } from "next-seo";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { ZK3Provider } from "zk3-sdk";
 
 import "~/src/styles/globals.css";
 const queryClient = new QueryClient();
@@ -86,7 +87,9 @@ const MyApp: AppType<{ session: Session | null }> = ({
           >
             <RainbowKitProvider chains={chains} theme={darkTheme()}>
               <QueryClientProvider client={queryClient}>
-                <Component {...pageProps} />
+                <ZK3Provider pinataJWT="" >
+                  <Component {...pageProps} />
+                </ZK3Provider>
               </QueryClientProvider>
             </RainbowKitProvider>
           </RainbowKitSiweNextAuthProvider>
