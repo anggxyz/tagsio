@@ -35,7 +35,6 @@
     "react-tilt": "^1.0.2",
     "siwe": "^2.1.4",
     "wagmi": "^0.9.6",
-    "zk3-sdk": "^0.1.10",
     "zod": "^3.21.4"
   },
   "devDependencies": {

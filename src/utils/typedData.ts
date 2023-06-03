@@ -1,6 +1,6 @@
 // All properties on a domain are optional
 export const domain = {
-  name: "ZK3 Sample Typed Message",
+  name: "Sample Typed Message",
   version: "1",
   chainId: 1,
   verifyingContract: "0xCcCCccccCCCCcCCCCCCcCcCccCcCCCcCcccccccC",
