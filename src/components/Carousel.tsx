@@ -93,7 +93,9 @@ function Carousel({
             hasMore && activePage > 0
               ? styles.carouselHasHothArrows
               : {
+                  // @ts-expect-error todo
                   [styles.carouselHasRightArrow]: hasMore,
+                  // @ts-expect-error todo
                   [styles.carouselHasLeftArrow]: activePage > 0,
                 }
           )}
