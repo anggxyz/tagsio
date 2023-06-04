@@ -21,6 +21,7 @@ import { NextSeo } from "next-seo";
 import { QueryClient, QueryClientProvider } from "react-query";
 
 import "~/src/styles/globals.css";
+import { UserProvider } from "../context/UserContext";
 const queryClient = new QueryClient();
 
 const { chains, provider } = configureChains(
@@ -86,7 +87,9 @@ const MyApp: AppType<{ session: Session | null }> = ({
           >
             <RainbowKitProvider chains={chains} theme={darkTheme()}>
               <QueryClientProvider client={queryClient}>
-                <Component {...pageProps} />
+                <UserProvider>
+                  <Component {...pageProps} />
+                </UserProvider>
               </QueryClientProvider>
             </RainbowKitProvider>
           </RainbowKitSiweNextAuthProvider>

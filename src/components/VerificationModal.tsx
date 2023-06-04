@@ -1,21 +1,12 @@
 import Modal from "react-modal";
-import type { User } from "@prisma/client";
 import { ConnectWalletButton } from "./ConnectWalletButton";
-import { VerifyTwitter } from "./VerifyTwitterButton";
-import { SignMessage } from "./SignTypedMessage";
 
 export const VerificationModal = ({
   modalIsOpen,
   closeModal,
-  user,
-  isSignedIn,
-  refetch,
 }: {
   modalIsOpen: boolean;
   closeModal: () => void;
-  user: User | undefined;
-  isSignedIn: boolean;
-  refetch: () => void;
 }) => {
   const customStyles = {
     content: {
@@ -44,13 +35,11 @@ export const VerificationModal = ({
           <button onClick={closeModal}>close</button>
         </div>
         <div className="flex h-full flex-col justify-center gap-3">
-          <ConnectWalletButton isSignedIn={isSignedIn} user={user} />
-          <VerifyTwitter
-            user={user}
-            refetch={refetch}
-            isSignedIn={isSignedIn}
-          />
-          <SignMessage user={user} refetchUser={refetch} />
+          <ConnectWalletButton />
+          {/* <VerifyTwitter /> */}
+
+          {/* dont need this for v0 */}
+          {/* <SignMessage /> */}
         </div>
       </div>
     </Modal>

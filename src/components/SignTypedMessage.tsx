@@ -22,26 +22,13 @@ const storeSignature = async ({ data, user }: { data: string; user: User }) => {
   }
 };
 
-export const SignMessage = ({
-  user,
-  refetchUser,
-}: {
-  user: User | undefined;
-  refetchUser: () => void;
-}) => {
+export const SignMessage = () => {
   const { data, isError, isLoading, isSuccess, signTypedData } =
     useSignTypedData({
       domain,
       value: message,
       types,
     });
-
-  useEffect(() => {
-    if (data && user) {
-      storeSignature({ data, user });
-      refetchUser();
-    }
-  }, [data, user]);
 
   const [buttonLabel, setButtonLabel] = useState<string>(
     "Sign Message and Generate Identity"
@@ -58,31 +45,6 @@ export const SignMessage = ({
     }
   }, [isLoading, isError, isSuccess, data]);
 
-  if (!user?.twitterId) {
-    return (
-      <Button
-        title="Verify Twitter to Generate Identity"
-        handleClick={() => {
-          /** do nothing */
-        }}
-        hoverEffect={false}
-        disabled={true}
-      />
-    );
-  }
-
-  if (user?.signature) {
-    return (
-      <Button
-        title={`Signed: ${formatWalletAddress(user.signature)}`}
-        handleClick={() => {
-          /** do nothing */
-        }}
-        hoverEffect={false}
-        disabled={true}
-      />
-    );
-  }
 
   return (
     <Button
