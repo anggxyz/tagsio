@@ -7,7 +7,6 @@ import TwitterProvider from "next-auth/providers/twitter";
 import { SiweMessage } from "siwe";
 import { env } from "~/src/env.mjs";
 import {
-  addTwitterDetailsToExistingUser,
   createUserFromAddress,
   userDatabaseId,
 } from "src/server/utils/user";
@@ -98,15 +97,8 @@ export default async function auth(req: NextApiRequest, res: NextApiResponse) {
   const session = await getServerSession(req, res, config);
   const isWeb3Connected = session?.user.address;
 
-  const signIn: CallbacksOptions["signIn"] = async ({ profile }) => {
+  const signIn: CallbacksOptions["signIn"] = async () => {
     if (isWeb3Connected) {
-      await addTwitterDetailsToExistingUser({
-        address: session.user.address,
-        twitterHandle: profile?.data.username || "not_found",
-        userId: profile?.data.id || "not_found",
-        image: profile?.data.profile_image_url || "not_found",
-        name: profile?.data.name || "not_found",
-      });
       return "/";
     }
     return true;

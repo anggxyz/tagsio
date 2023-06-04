@@ -1,18 +1,13 @@
-import type { User } from "@prisma/client";
 import { useConnectModal } from "@rainbow-me/rainbowkit";
-import { useDisconnect } from "wagmi";
 import Button from "./Button";
 import formatWalletAddress from "../utils/formatAddress";
+import { useUser } from "../context/UserContext";
+import { signOut } from "next-auth/react";
 
-export const ConnectWalletButton = ({
-  isSignedIn,
-  user,
-}: {
-  isSignedIn: boolean;
-  user?: User;
-}) => {
+export const ConnectWalletButton = () => {
   const { openConnectModal } = useConnectModal();
-  const { disconnect } = useDisconnect();
+  const { fetchedUser: user } = useUser();
+  const { isSignedIn } = user;
   if (isSignedIn && user?.address) {
     return (
       <div className="flex flex-row gap-2">
@@ -26,7 +21,7 @@ export const ConnectWalletButton = ({
         />{" "}
         <Button
           title="Disconnect"
-          handleClick={() => disconnect()}
+          handleClick={() => signOut()}
           hoverEffect={false}
           className="h-10 w-auto bg-red-500 text-white hover:bg-red-600"
         />
@@ -37,7 +32,7 @@ export const ConnectWalletButton = ({
     <Button
       handleClick={openConnectModal}
       title="Connect Wallet"
-      hoverEffect={false}
+      hoverEffect={true}
       className="w-full bg-blue-500 text-white"
     />
   );

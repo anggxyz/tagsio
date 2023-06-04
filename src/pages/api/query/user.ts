@@ -7,9 +7,9 @@ export default async function handler(
   res: NextApiResponse
 ) {
   console.log("[api/query/user] user");
-  const { userId }: { userId: string } = pick(req.body, ["userId"]);
+  const { address }: { address: string } = pick(req.body, ["address"]);
   const user = await prisma.user.findUniqueOrThrow({
-    where: { id: userId },
+    where: { address },
   });
   res.status(200).json({
     data: user,
